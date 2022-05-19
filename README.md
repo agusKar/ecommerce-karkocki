@@ -1,5 +1,4 @@
-Ecommerce Agustin Karkocki
-
+# Ecommerce Agustin Karkocki
 
 # Getting Started with Create React App
 
