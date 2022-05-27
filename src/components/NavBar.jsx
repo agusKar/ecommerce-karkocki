@@ -1,6 +1,6 @@
 const NavBar = () => {
   return (
-    <nav className="navbar py-3 navbar-expand-lg navbar-light navbar-white-gray fixed-top">
+    <nav className="navbar py-3 navbar-expand-lg navbar-light navbar-white-gray fixed-top" id="navbar">
       <div className="container">
         <a className="navbar-brand" href="#"><b>BOOKS</b><sup>KAR</sup></a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
