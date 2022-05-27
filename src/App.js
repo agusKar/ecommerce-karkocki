@@ -31,9 +31,10 @@ function App() {
       photo: 'call_of_cthulhu.jpeg'
     },
   ]
+  const itemCount = booksList.length
   return (
     <div id="app">
-      <NavBar />
+      <NavBar itemCount={itemCount} />
       <Hero />
       {/* content */}
       <div className="container">

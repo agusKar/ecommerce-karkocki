@@ -1,6 +1,6 @@
 import CartWidget from "./CartWidget"
 
-const NavBar = () => {
+const NavBar = ({itemCount}) => {
   return (
     <nav className="navbar py-3 navbar-expand-lg navbar-dark navbar-white-gray fixed-top" id="navbar">
       <div className="container">
@@ -38,7 +38,7 @@ const NavBar = () => {
           <div className="navbar-nav navbar-nav-scroll">
             <li className="nav-item">
               <a className="nav-link" href="https://www.instagram.com/" target="_blank">
-                <CartWidget numItems="1" />
+                <CartWidget numItems={itemCount} />
               </a>
             </li>
           </div>
