@@ -12,7 +12,8 @@ function App() {
       author: "J.R.R. Tolkien",
       date: "Sep 21 1937",
       info: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias ex ipsum commodi, inventore earum nemo iusto architecto ullam omnis reiciendis vitae unde voluptatibus itaque vel optio suscipit voluptates? Consectetur, cupiditate.",
-      photo: 'hobbit_cover.jpg'
+      photo: 'hobbit_cover.jpg',
+      stock: 15
     },
     {
       id: 2,
@@ -20,7 +21,8 @@ function App() {
       author: "J.R.R. Tolkien",
       date: "Sep 21 1977",
       info: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias ex ipsum commodi, inventore earum nemo iusto architecto ullam omnis reiciendis vitae unde voluptatibus itaque vel optio suscipit voluptates? Consectetur, cupiditate.",
-      photo: 'the_silmarillion.jpg'
+      photo: 'the_silmarillion.jpg',
+      stock: 0
     },
     {
       id: 3,
@@ -28,7 +30,8 @@ function App() {
       author: "H.P. Lovecraft",
       date: "Feb 1928 ",
       info: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias ex ipsum commodi, inventore earum nemo iusto architecto ullam omnis reiciendis vitae unde voluptatibus itaque vel optio suscipit voluptates? Consectetur, cupiditate.",
-      photo: 'call_of_cthulhu.jpeg'
+      photo: 'call_of_cthulhu.jpeg',
+      stock: 4
     },
   ]
   const itemCount = booksList.length
