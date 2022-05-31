@@ -3,8 +3,10 @@ import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import Hero from './components/Hero';
 import ItemListContainer from './components/ItemListContainer';
+import { useState } from 'react';
 
 function App() {
+  const [cartItemsCount, setCartItemsCount] = useState(0);
   const booksList = [
     {
       id: 1,
@@ -34,10 +36,9 @@ function App() {
       stock: 4
     },
   ]
-  const itemCount = booksList.length
   return (
     <div id="app">
-      <NavBar itemCount={itemCount} />
+      <NavBar cartItemsCount={cartItemsCount} />
       <Hero />
       {/* content */}
       <div className="container">
@@ -48,7 +49,11 @@ function App() {
           <hr />
         </div>
         <div className="row g-3">
-          <ItemListContainer booksList={booksList} />
+          <ItemListContainer
+            booksList={booksList}
+            cartItemsCount={cartItemsCount}
+            setCartItemsCount={setCartItemsCount}
+          />
         </div>
       </div>
       {/* footer */}

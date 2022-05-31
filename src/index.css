@@ -6,12 +6,21 @@
   --background: #1d1d1d;
   --dark: #0e0e0e;
   --text-primary: #f8F8F8;
-  --text-secondary: #F76B1C;
+  --text-secondary: #B721FF;
   --cyan: #21D4FD;
-  --violet: #B721FF;
   --gradient: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
 
   
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
 }
 
 /* width */
@@ -67,8 +76,8 @@ h2 {
   border-color: var(--cyan);
 }
 .btn-outline-accent:hover {
-  background: var(--gradient);
-  color: var(--text-primary);
+  background: var(--cyan);
+  color: var(--background);
 }
 .btn-outline-accent:disabled {
   color: gray;
@@ -77,6 +86,12 @@ h2 {
 
 .bg-gradient{
   background: var(--gradient)!important;
+}
+.bg-cyan{
+  background: var(--cyan)!important;
+}
+.text-color-background{
+  color: var(--background)!important;
 }
 
 /* Navbar */
@@ -180,7 +195,42 @@ h2 {
   height: 0;
   overflow: hidden;
 }
-
+.box .box-body .book-stock {
+  font-weight: 100;
+  font-size: 0.8rem;
+  opacity: 0.3;
+  letter-spacing: 2px;
+}
+.box .box-body .item-count{
+  background-color: var(--background);
+  border-radius: 25px;
+}
+.box .box-body .item-count button{
+  width: 30px;
+  padding: 0;
+  border: none;
+  height: 30px;
+  color: black;
+  font-weight: bold;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  justify-content: center;
+}
+.box .box-body .item-count input{
+  width: 70%;
+  padding: 0;
+  height: 30px;
+  text-align: center;
+  border: none;
+  color: var(--cyan);
+  background-color: transparent;
+}
+.box .box-body .item-count input:focus,
+.box .box-body .item-count input:hover{
+  outline: none;
+}
 .box:hover {
   box-shadow: 0px 5px 10px #00000021;
 }

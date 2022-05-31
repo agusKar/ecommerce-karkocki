@@ -1,5 +1,22 @@
-const Item = ({ book }) => {
+import { useEffect, useState } from "react";
+import ItemCount from "./ItemCount"
+
+const Item = ({ book, cartItemsCount, setCartItemsCount }) => {
   const { name, photo, author, date, info, stock } = book
+  const [quantity, setQuantity] = useState(0);
+  const [alert, setAlert] = useState(false);
+
+  useEffect(() => {
+    if(quantity > 0){
+      setAlert(true)
+    }
+    setTimeout(() => {
+      setAlert(false)
+    }, 3000);
+
+    setCartItemsCount(cartItemsCount + quantity)
+  }, [quantity]);
+
   return (
     <div className="col-6 col-sm-4 col-lg-3 col-xl-2">
       <div className="box pb-3">
@@ -16,10 +33,18 @@ const Item = ({ book }) => {
             {date}
           </p>
           <p className="book-info pe-3">{info}</p>
-          <button type="button" className="btn btn-outline-accent rounded-pill mt-2 w-100" disabled={stock === 0 && "disabled"}>Add to cart</button>
-          <p className="book-stock m-0"><small>Stock: <span className={stock>0?"text-info":"text-danger"}>{stock}</span></small></p>
+          <ItemCount 
+            stock={stock}
+            setQuantity={setQuantity}
+          />
         </div>
       </div>
+      {
+        alert &&
+        <div className="alert alert-success text-center mt-2 p-1">
+          Added to cart <b>successfully</b>
+        </div>
+      }
     </div>
 
   )

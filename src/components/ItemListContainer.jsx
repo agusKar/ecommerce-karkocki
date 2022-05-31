@@ -1,11 +1,16 @@
 import Item from './Item'
 
-const ItemListContainer = ({booksList}) => {
+const ItemListContainer = ({booksList, cartItemsCount, setCartItemsCount}) => {
   return (
     <>
       {
         booksList.map(book => (
-          <Item book={book} key={book.id} />
+          <Item 
+            key={book.id} 
+            book={book} 
+            cartItemsCount={cartItemsCount} 
+            setCartItemsCount={setCartItemsCount}
+          />
         ))
       }
     </>
