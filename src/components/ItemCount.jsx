@@ -67,7 +67,7 @@ const ItemCount = ({ stock, setQuantity }) => {
       />
 
       {/* stock info */}
-      <p className="book-stock mt-1">Stock: <span className={stock > 0 ? "text-info" : "text-danger"}> <b>{stock}</b></span></p>
+      <p className="book-stock mt-1">Stock: <span className={stock > 0 ? "text-success" : "text-danger"}> <b>{stock}</b></span></p>
     </form>
   )
 }

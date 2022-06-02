@@ -71,7 +71,7 @@ const ItemListContainer = ({ cartItemsCount, setCartItemsCount }) => {
         loading ?
           <div className="d-flex align-items-center justify-content-center">
             <span className="me-4">Loading books...</span>
-            <div className="spinner-grow text-primary" role="status"></div>
+            <div className="spinner-grow bg-gradient shadow-lg " role="status"></div>
           </div>
           :
           alert ?
