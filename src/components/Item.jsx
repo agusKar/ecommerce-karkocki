@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Alert from "./Alert";
 import ItemCount from "./ItemCount"
 
 const Item = ({ book, cartItemsCount, setCartItemsCount }) => {
@@ -19,7 +20,7 @@ const Item = ({ book, cartItemsCount, setCartItemsCount }) => {
 
   return (
     <div className="col-6 col-sm-4 col-lg-3 col-xl-2">
-      <div className="box pb-3">
+      <div className="box pb-3 mb-2">
         <div className="box-header">
           <div className="box-image">
             <img src={require(`../assets/img/${photo}`)} alt={name} />
@@ -41,9 +42,11 @@ const Item = ({ book, cartItemsCount, setCartItemsCount }) => {
       </div>
       {
         alert &&
-        <div className="alert alert-success text-center mt-2 p-1">
+        <Alert
+          type="success"
+        >
           Added to cart <b>successfully</b>
-        </div>
+        </Alert>
       }
     </div>
 

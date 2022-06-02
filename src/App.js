@@ -7,35 +7,7 @@ import { useState } from 'react';
 
 function App() {
   const [cartItemsCount, setCartItemsCount] = useState(0);
-  const booksList = [
-    {
-      id: 1,
-      name: "The Hobbit",
-      author: "J.R.R. Tolkien",
-      date: "Sep 21 1937",
-      info: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias ex ipsum commodi, inventore earum nemo iusto architecto ullam omnis reiciendis vitae unde voluptatibus itaque vel optio suscipit voluptates? Consectetur, cupiditate.",
-      photo: 'hobbit_cover.jpg',
-      stock: 15
-    },
-    {
-      id: 2,
-      name: "The Silmarillion",
-      author: "J.R.R. Tolkien",
-      date: "Sep 21 1977",
-      info: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias ex ipsum commodi, inventore earum nemo iusto architecto ullam omnis reiciendis vitae unde voluptatibus itaque vel optio suscipit voluptates? Consectetur, cupiditate.",
-      photo: 'the_silmarillion.jpg',
-      stock: 0
-    },
-    {
-      id: 3,
-      name: "Call of Cthulhu",
-      author: "H.P. Lovecraft",
-      date: "Feb 1928 ",
-      info: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias ex ipsum commodi, inventore earum nemo iusto architecto ullam omnis reiciendis vitae unde voluptatibus itaque vel optio suscipit voluptates? Consectetur, cupiditate.",
-      photo: 'call_of_cthulhu.jpeg',
-      stock: 4
-    },
-  ]
+
   return (
     <div id="app">
       <NavBar cartItemsCount={cartItemsCount} />
@@ -50,7 +22,6 @@ function App() {
         </div>
         <div className="row g-3">
           <ItemListContainer
-            booksList={booksList}
             cartItemsCount={cartItemsCount}
             setCartItemsCount={setCartItemsCount}
           />
