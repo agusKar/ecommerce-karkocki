@@ -63,6 +63,10 @@ body {
   overflow-x: hidden;
 }
 
+a {
+  text-decoration: none;
+}
+
 h2 {
   font-weight: bold;
   font-size: 3rem;
@@ -126,6 +130,39 @@ h2 {
   color: var(--accent) !important;
 }
 
+.dropdown-menu {
+  background-color: var(--background);
+  padding: 0.5rem 0;
+}
+
+.dropdown-item {
+  position: relative;
+  color: var(--text-primary) !important;
+  background-color: transparent !important;
+  opacity: .8;
+}
+
+.dropdown-item:before,
+.dropdown-item:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 0%;
+  height: 5px;
+  background: var(--gradient);
+  border-radius: 15px;
+  transition: width .6s;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+  opacity: 1;
+}
+
+.dropdown-item:focus:before,
+.dropdown-item:hover:before {
+  width: 70%;
+}
 
 @media (min-width: 992px) {
 
