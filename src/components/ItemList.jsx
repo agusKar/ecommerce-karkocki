@@ -1,6 +1,6 @@
 import Item from "./Item"
 
-const ItemList = ({booksList, cartItemsCount, setCartItemsCount}) => {
+const ItemList = ({booksList}) => {
   return (
     <>
       {
@@ -8,8 +8,6 @@ const ItemList = ({booksList, cartItemsCount, setCartItemsCount}) => {
           <Item
             key={book.id}
             book={book}
-            cartItemsCount={cartItemsCount}
-            setCartItemsCount={setCartItemsCount}
           />
         ))
       }

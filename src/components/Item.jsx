@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Alert from "./Alert";
-import ItemCount from "./ItemCount"
+import ItemInfo from "./ItemInfo"
 
-const Item = ({ book, cartItemsCount, setCartItemsCount }) => {
-  const { name, photo, author, date, info, stock } = book
+const Item = ({ book}) => {
+  const { name, photo, author, date, info, stock, id } = book
   const [quantity, setQuantity] = useState(0);
   const [alert, setAlert] = useState(false);
 
@@ -15,7 +15,7 @@ const Item = ({ book, cartItemsCount, setCartItemsCount }) => {
       setAlert(false)
     }, 3000);
 
-    setCartItemsCount(cartItemsCount + quantity)
+    // setCartItemsCount(cartItemsCount + quantity)
   }, [quantity]);
 
   return (
@@ -34,7 +34,8 @@ const Item = ({ book, cartItemsCount, setCartItemsCount }) => {
             {date}
           </p>
           <p className="book-info pe-3">{info}</p>
-          <ItemCount 
+          <ItemInfo
+            id={id}
             stock={stock}
             setQuantity={setQuantity}
           />

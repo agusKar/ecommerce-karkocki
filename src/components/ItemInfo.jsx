@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
-const ItemCount = ({ stock, setQuantity }) => {
+const ItemInfo = ({ id, stock, setQuantity }) => {
   const [inputNumber, setInputNumber] = useState(0);
 
   const substractQuantity = () => {
@@ -57,7 +58,11 @@ const ItemCount = ({ stock, setQuantity }) => {
           </button>
         </div>
       }
-      {/* add book to cart */}
+      <Link 
+        to={`/item/${id}`}
+        className="btn btn-more-info btn-outline-yellow btn-sm rounded-pill mt-2 w-100">
+          More Info
+      </Link>
       <input 
         type="submit" 
         className="btn btn-outline-accent rounded-pill mt-2 w-100" 
@@ -72,4 +77,4 @@ const ItemCount = ({ stock, setQuantity }) => {
   )
 }
 
-export default ItemCount
+export default ItemInfo
