@@ -286,8 +286,8 @@ h2 {
   border-radius: 25px;
 }
 
-.box .box-body .item-count button {
-  width: 30px;
+.item-count button {
+  width: 15%;
   padding: 0;
   border: none;
   height: 30px;
@@ -300,7 +300,7 @@ h2 {
   justify-content: center;
 }
 
-.box .box-body .item-count input {
+.item-count input {
   width: 70%;
   padding: 0;
   height: 30px;
@@ -310,8 +310,8 @@ h2 {
   background-color: transparent;
 }
 
-.box .box-body .item-count input:focus,
-.box .box-body .item-count input:hover {
+.item-count input:focus,
+.item-count input:hover {
   outline: none;
 }
 

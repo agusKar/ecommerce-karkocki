@@ -3,9 +3,11 @@ import {useParams} from 'react-router-dom';
 import ItemListContainer from './ItemListContainer';
 
 import not_found from '../assets/img/not-found.png'
-import png_404 from '../assets/img/error-404.png';
+import { useContext } from 'react';
+import {CartContext} from '../context/CartContextProvider'
 
-const Category = ({booksArray}) => {
+const Category = () => {
+  const {books} = useContext(CartContext)
   const { id } = useParams()
 
   const [idParam, setIdParam] = useState(id);
@@ -13,8 +15,8 @@ const Category = ({booksArray}) => {
 
   useEffect(() => {
     setIdParam(id)
-    const books = booksArray.filter(book => book.categories.includes(idParam))
-    setBookList(books)
+    const booksArray = books.filter(book => book.categories.includes(idParam))
+    setBookList(booksArray)
   }, [id, idParam]);
   return (
     <div className="container top-to-navbar-2">
@@ -26,7 +28,7 @@ const Category = ({booksArray}) => {
       <div className="row mt-5">
         {
           bookList && bookList.length > 0 ?
-            <ItemListContainer booksArray={bookList} />
+            <ItemListContainer books={bookList} />
           :
             <div className="col-12 text-center">
               <hr />

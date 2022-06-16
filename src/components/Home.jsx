@@ -1,7 +1,10 @@
+import { useContext } from 'react';
+import {CartContext} from '../context/CartContextProvider';
 import Hero from './Hero';
 import ItemListContainer from './ItemListContainer';
 
-const Home = ({booksArray}) => {
+const Home = () => {
+  const {books} = useContext(CartContext);
   return (
     <>
       <Hero />
@@ -14,7 +17,7 @@ const Home = ({booksArray}) => {
         </div>
         <div className="row g-3">
           <ItemListContainer
-            booksArray={booksArray}
+            books={books}
           />
         </div>
       </div>

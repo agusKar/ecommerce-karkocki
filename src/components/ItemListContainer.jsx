@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Alert from './Alert';
 import ItemList from './ItemList'
 
-const ItemListContainer = ({ booksArray }) => {
+const ItemListContainer = ({ books }) => {
 
   const [booksList, setBooksList] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -13,7 +13,7 @@ const ItemListContainer = ({ booksArray }) => {
     const bookPromise = new Promise((res, rej) => {
       setLoading(true)
       setTimeout(() => {
-        res(booksArray)
+        res(books)
         /*
           Descomentar esta linea para ver lo que ocurre en un error
           rej('Error')
@@ -33,7 +33,7 @@ const ItemListContainer = ({ booksArray }) => {
         setLoading(false)
       })
 
-  }, [booksArray]);
+  }, [books]);
 
 
   return (
