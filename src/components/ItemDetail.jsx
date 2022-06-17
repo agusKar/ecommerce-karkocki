@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartContextProvider";
 import ItemCount from "./ItemCount";
 
 const ItemDetail = ({ singleBook }) => {
-  const { name, photo, author, date, info, stock, categories } = singleBook;
+  const { addItem, isInCart } = useContext(CartContext);
+  const { id, name, photo, author, date, price, info, stock, categories } =
+    singleBook;
   const [inputNumber, setInputNumber] = useState(0);
   const [buttonDisplay, setButtonDisplay] = useState(true);
 
+  useEffect(() => {
+    if (isInCart(id)) {
+      setButtonDisplay(false);
+    }
+  }, [id]);
   const substractQuantity = () => {
     if (inputNumber > 0) {
       setInputNumber(inputNumber - 1);
@@ -27,10 +35,8 @@ const ItemDetail = ({ singleBook }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputNumber > 0) {
-      alert(`Added ${inputNumber} to the CART`);
+      addItem(singleBook, inputNumber);
       setButtonDisplay(false);
-    } else {
-      alert("Quantity incorrect");
     }
   };
   return (
@@ -50,6 +56,7 @@ const ItemDetail = ({ singleBook }) => {
         <p>{author}</p>
         <p>{date}</p>
         <cite>{info}</cite>
+        <h4 className="my-3">${price}</h4>
         <div className="mt-3">
           {categories &&
             categories.length > 0 &&
@@ -60,15 +67,15 @@ const ItemDetail = ({ singleBook }) => {
               >
                 <a
                   href={`/category/${category}`}
-                  className="text-color-background fs-6 p-2"
+                  className="text-color-background p-2"
                 >
                   {category}
                 </a>
               </span>
             ))}
         </div>
-        <form onSubmit={(e) => handleSubmit(e)} className="mt-3 w-25">
-          {buttonDisplay ? (
+        {buttonDisplay && stock > 0 ? (
+          <form onSubmit={(e) => handleSubmit(e)} className="mt-3 w-50">
             <div>
               <ItemCount
                 inputNumber={inputNumber}
@@ -82,17 +89,20 @@ const ItemDetail = ({ singleBook }) => {
                 value="Add to cart"
               />
             </div>
-          ) : (
-            <div>
-              <Link
-                className="btn btn-outline-accent rounded-pill mt-2 w-100"
-                to="/cart"
-              >
-                Go to Cart Page
-              </Link>
-            </div>
-          )}
-        </form>
+          </form>
+        ) : stock <= 0 ? (
+          <h4 className="mt-4">Without Stock</h4>
+        ) : (
+          <div className="mt-4">
+            <h4 className="text-center">This book is in the cart</h4>
+            <Link
+              className="btn btn-outline-accent rounded-pill mt-2 w-100"
+              to="/cart"
+            >
+              Go to Cart Page
+            </Link>
+          </div>
+        )}
       </div>
     </>
   );
