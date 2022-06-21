@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContextProvider";
+
 const CartDetailPage = () => {
   const { clear, totalPriceCart, removeItem, cartItems } =
     useContext(CartContext);
@@ -59,6 +60,12 @@ const CartDetailPage = () => {
                     ))}
                 </tbody>
               </table>
+              <button
+                onClick={() => clear()}
+                className="btn btn-outline-accent mt-3"
+              >
+                Clear cart
+              </button>
             </div>
             <div className="col-4">
               <div className="bg-dark p-3">
@@ -76,7 +83,12 @@ const CartDetailPage = () => {
             </div>
           </div>
         ) : (
-          <h4 className="text-center">Your cart is empty</h4>
+          <div className="text-center">
+            <h4>Your cart is empty</h4>
+            <Link className="btn btn-outline-accent mt-5" to="/">
+              Return to homepage
+            </Link>
+          </div>
         )}
       </div>
     </div>

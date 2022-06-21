@@ -41,6 +41,16 @@ const CartContextProvider = ({ children }) => {
   ];
   const [books, setBooks] = useState(booksArray);
   const [cartItems, setCartItems] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  const getCategories = () => {
+    const arrayCategories = booksArray.map((book) => book.categories);
+    const categoriesArray = [].concat(...arrayCategories);
+    let uniqueArrayCategories = categoriesArray.filter((element, index) => {
+      return categoriesArray.indexOf(element) === index;
+    });
+    setCategories(uniqueArrayCategories);
+  };
 
   const addItem = (item, quantity) => {
     if (!isInCart(item.id)) {
@@ -67,7 +77,10 @@ const CartContextProvider = ({ children }) => {
     return booksArray.find((item) => item.id == id);
   };
   const quantityCart = () => {
-    return cartItems.length;
+    return cartItems?.reduce(
+      (previousValue, currentValue) => previousValue + currentValue.quantity,
+      0
+    );
   };
   const totalPriceCart = () => {
     return cartItems?.reduce((previousValue, currentValue) => {
@@ -80,6 +93,7 @@ const CartContextProvider = ({ children }) => {
       value={{
         books,
         cartItems,
+        categories,
         quantityCart,
         setBooks,
         addItem,
@@ -88,6 +102,7 @@ const CartContextProvider = ({ children }) => {
         clear,
         totalPriceCart,
         findBook,
+        getCategories,
       }}
     >
       {children}

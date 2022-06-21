@@ -1,7 +1,14 @@
+import { useEffect } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartContextProvider";
 import CartWidget from "./CartWidget";
 
 const NavBar = () => {
+  const { categories, getCategories } = useContext(CartContext);
+  useEffect(() => {
+    getCategories();
+  }, []);
   return (
     <nav
       className="navbar py-3 navbar-expand-lg navbar-dark navbar-white-gray fixed-top"
@@ -47,41 +54,17 @@ const NavBar = () => {
                 Categories
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <Link className="dropdown-item" to="category/action">
-                    Action
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="category/classics">
-                    Classics
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="category/drama">
-                    Drama
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="category/fantasy">
-                    Fantasy
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="category/horror">
-                    Horror
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="category/romance">
-                    Romance
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="category/sci-fi">
-                    Science Fiction
-                  </Link>
-                </li>
+                {categories.length > 0 &&
+                  categories.map((category, index) => (
+                    <li key={index}>
+                      <Link
+                        className="dropdown-item"
+                        to={`category/${category}`}
+                      >
+                        {category}
+                      </Link>
+                    </li>
+                  ))}
               </ul>
             </li>
           </ul>

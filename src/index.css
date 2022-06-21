@@ -161,6 +161,7 @@ table td{
 }
 
 .dropdown-item {
+  text-transform: capitalize;
   position: relative;
   color: var(--text-primary) !important;
   background-color: transparent !important;
@@ -363,4 +364,5 @@ footer {
 footer .nav-link {
   color: var(--background) !important;
   font-weight: 500;
+  text-transform: capitalize;
 }

@@ -5,7 +5,7 @@ import { CartContext } from "../context/CartContextProvider";
 import ItemDetail from "./ItemDetail";
 
 const ItemDetailContainer = () => {
-  const { findBook } = useContext(CartContext);
+  const { findBook, getCategories } = useContext(CartContext);
   const [singleBook, setSingleBook] = useState({});
 
   const { id } = useParams();
@@ -17,6 +17,7 @@ const ItemDetailContainer = () => {
   return (
     <div className="container top-to-navbar-2">
       <div className="row">
+        {getCategories()}
         <ItemDetail singleBook={singleBook} />
       </div>
     </div>
