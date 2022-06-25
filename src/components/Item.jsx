@@ -5,7 +5,7 @@ import { CartContext } from "../context/CartContextProvider";
 
 const Item = ({ book }) => {
   const { addItem, isInCart } = useContext(CartContext);
-  const { name, photo, author, date, info, stock, id, price } = book;
+  const { name, photo, author, date, info, stock, id, price, offer } = book;
   const [quantity, setQuantity] = useState(0);
   const [alert, setAlert] = useState(false);
   const [buttonDisplay, setButtonDisplay] = useState(true);
@@ -37,7 +37,7 @@ const Item = ({ book }) => {
         <div className="box-body p-3">
           <p className="book-title">{name}</p>
           <p className="book-author">{author}</p>
-          <p className="book-date">
+          {/* <p className="book-date">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -51,7 +51,7 @@ const Item = ({ book }) => {
               <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
             </svg>
             {date}
-          </p>
+          </p> */}
           <p className="book-info pe-3">{info}</p>
           <p>
             <span className="price">${price}</span>

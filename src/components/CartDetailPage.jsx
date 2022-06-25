@@ -76,9 +76,9 @@ const CartDetailPage = () => {
                 <h5 className="mb-4">
                   Total: <span>${totalPriceCart()}</span>
                 </h5>
-                <button className="btn btn-success w-100">
+                <Link to="/checkout" className="btn btn-success w-100">
                   Proceed to Checkout
-                </button>
+                </Link>
               </div>
             </div>
           </div>

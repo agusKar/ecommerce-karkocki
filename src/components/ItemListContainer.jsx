@@ -1,36 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Alert from "./Alert";
 import ItemList from "./ItemList";
+import { CartContext } from "../context/CartContextProvider";
 
-const ItemListContainer = ({ books }) => {
+const ItemListContainer = ({ categoryProp = null }) => {
   const [booksList, setBooksList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(false);
+  const { getAllBooks } = useContext(CartContext);
 
-  useEffect(() => {
-    const bookPromise = new Promise((res, rej) => {
+  const getProductsFirebase = async () => {
+    try {
       setLoading(true);
-      setTimeout(() => {
-        res(books);
-        /*
-          Descomentar esta linea para ver lo que ocurre en un error
-          rej("Error");
-          */
-      }, 800);
-    });
-
-    bookPromise
-      .then((result) => {
-        setBooksList(result);
-      })
-      .catch((error) => {
-        setAlert(true);
-        console.log(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [books]);
+      const data = await getAllBooks(categoryProp);
+      setBooksList(data);
+      setLoading(false);
+    } catch (error) {
+      setAlert(true);
+    }
+  };
+  useEffect(() => {
+    getProductsFirebase();
+  }, [categoryProp]);
 
   return (
     <>
