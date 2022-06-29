@@ -65,12 +65,12 @@ const ItemDetail = ({ singleBook }) => {
                 key={index}
                 className="badge grow rounded-pill bg-gradient me-2"
               >
-                <a
-                  href={`/category/${category}`}
+                <Link
+                  to={`/category/${category}`}
                   className="text-color-background p-2"
                 >
                   {category}
-                </a>
+                </Link>
               </span>
             ))}
         </div>

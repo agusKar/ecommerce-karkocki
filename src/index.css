@@ -218,6 +218,7 @@ table td {
   position: absolute;
   overflow: hidden;
   height: 35%;
+  width: 100%;
   transition: all 0.3s;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;

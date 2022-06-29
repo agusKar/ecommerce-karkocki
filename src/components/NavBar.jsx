@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContextProvider";
 import CartWidget from "./CartWidget";
@@ -69,6 +68,11 @@ const NavBar = () => {
             </li>
           </ul>
           <div className="navbar-nav navbar-nav-scroll">
+            <li className="nav-item grow position-relative">
+              <Link to="/orders" className="nav-link grow active">
+                Orders
+              </Link>
+            </li>
             <li className="nav-item grow position-relative">
               <CartWidget />
             </li>

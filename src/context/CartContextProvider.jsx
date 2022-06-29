@@ -1,4 +1,5 @@
 import {
+  addDoc,
   collection,
   doc,
   getDoc,
@@ -19,6 +20,12 @@ const dateOptions = {
 
 const CartContextProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
+  const [orders, setOrders] = useState(
+    localStorage.getItem("orders")
+      ? JSON.parse(window.localStorage.getItem("orders"))
+      : []
+  );
+
   const [cartItems, setCartItems] = useState(
     localStorage.getItem("cartItems")
       ? JSON.parse(window.localStorage.getItem("cartItems"))
@@ -31,7 +38,6 @@ const CartContextProvider = ({ children }) => {
     if (!category) {
       itemsCollection = collection(db, "books");
     } else {
-      console.log(category);
       itemsCollection = query(
         collection(db, "books"),
         where("categories", "array-contains", category)
@@ -51,6 +57,18 @@ const CartContextProvider = ({ children }) => {
       return item;
     });
     return booksArray;
+  };
+
+  const getOrders = async () => {
+    const ordersCollection = collection(db, "orders");
+    const items = await getDocs(ordersCollection);
+    const ordersArray = items.docs.map((item) => ({
+      ...item.data(),
+      id: item.id,
+    }));
+    window.localStorage.setItem("orders", JSON.stringify(ordersArray));
+    setOrders(ordersArray);
+    return ordersArray;
   };
 
   const getCategories = async () => {
@@ -75,6 +93,21 @@ const CartContextProvider = ({ children }) => {
       setCartItems(data);
     }
   };
+
+  const addOrder = async (order) => {
+    if (order) {
+      const ordersCollection = collection(db, "orders");
+      const res = await addDoc(ordersCollection, order);
+      const data = [...orders, res.id];
+      setOrders(data);
+      window.localStorage.setItem("orders", JSON.stringify(data));
+      window.localStorage.setItem("cartItems", JSON.stringify([]));
+      setCartItems([]);
+      return res.id;
+    }
+    return null;
+  };
+
   const removeItem = (id) => {
     if (isInCart(id)) {
       const newArray = cartItems?.filter((item) => item.id != id);
@@ -120,10 +153,13 @@ const CartContextProvider = ({ children }) => {
         books,
         cartItems,
         categories,
+        orders,
         getAllBooks,
         quantityCart,
+        getOrders,
         setBooks,
         addItem,
+        addOrder,
         removeItem,
         isInCart,
         clear,
