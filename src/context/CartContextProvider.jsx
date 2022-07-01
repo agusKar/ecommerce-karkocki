@@ -59,16 +59,23 @@ const CartContextProvider = ({ children }) => {
     return booksArray;
   };
 
+  const getOrder = async (id) => {
+    const q = doc(db, "orders", id);
+
+    const res = await getDoc(q);
+    return res.exists() && { id, data: res.data() };
+  };
+
   const getOrders = async () => {
-    const ordersCollection = collection(db, "orders");
-    const items = await getDocs(ordersCollection);
-    const ordersArray = items.docs.map((item) => ({
-      ...item.data(),
-      id: item.id,
-    }));
-    window.localStorage.setItem("orders", JSON.stringify(ordersArray));
-    setOrders(ordersArray);
-    return ordersArray;
+    const ordersLocal = JSON.parse(window.localStorage.getItem("orders"));
+    try {
+      const res = await Promise.all(
+        ordersLocal.map(async (order) => await getOrder(order))
+      );
+      return res;
+    } catch (error) {
+      return null;
+    }
   };
 
   const getCategories = async () => {

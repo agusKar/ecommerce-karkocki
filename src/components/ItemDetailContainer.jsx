@@ -26,7 +26,7 @@ const ItemDetailContainer = () => {
   }, [id]);
 
   return (
-    <div className="container top-to-navbar-2">
+    <div className="container top-to-navbar-2" style={{ minHeight: "80vh" }}>
       <div className="row">
         {loading ? (
           <div className="d-flex align-items-center justify-content-center">

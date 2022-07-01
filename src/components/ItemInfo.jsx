@@ -88,7 +88,15 @@ const ItemInfo = ({ id, stock, buttonDisplay, setQuantity }) => {
         </>
       )}
 
-      {!buttonDisplay && <div className="mt-3">This book is in the cart</div>}
+      {!buttonDisplay && (
+        <div className="mt-3">
+          <h6>This book is in the cart</h6>
+
+          <Link className="btn text-orange rounded-pill mt-2 w-100" to="/cart">
+            Go to Cart Page
+          </Link>
+        </div>
+      )}
     </form>
   );
 };

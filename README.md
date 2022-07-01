@@ -1,72 +1,62 @@
-# Book Ecommerce Agustin Karkocki
+# Store 🛍️
 
-# Getting Started with Create React App
+_El STORE esta desarrollado con React.js (v18.1.0)_
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Comenzando 🚀
 
-## Available Scripts
+_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 
-In the project directory, you can run:
+### Pre-requisitos 📋
 
-### `npm start`
+_Que cosas necesitas para instalar la app y como instalarlas_
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+yarn install or npm install
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+_\*Si no tienes YARN_
 
-### `npm test`
+```bash
+npm install --global yarn
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Ejecutando versión Develop 🔧
 
-### `npm run build`
+_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+yarn start or npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+_Y corre en el navegador [http://localhost:3000](http://localhost:3000)_
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Despliegue 📦
 
-### `npm run eject`
+La SPA esta alojada en FIREBASE.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<!-- - [books-store](https://shoes-store-coder.netlify.app/) -->
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Demo 🖥️
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Agregando productos al carrito
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- ![add-to-cart](https://user-images.githubusercontent.com/21273404/164844910-bea2e713-9467-486d-a1f1-66b421ce0121.gif) -->
 
-## Learn More
+### Checkout
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<!-- ![checkout](https://user-images.githubusercontent.com/21273404/164844927-615dccc4-2af1-4f26-9f24-a639f561e04e.gif) -->
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Construido con 🛠️
 
-### Code Splitting
+_Herramientas que utilizaste para crear tu proyecto_
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [React.js](https://nextjs.org/) - El framework web usado
+- [React Router Dom](https://reactrouter.com/) - Libreria para manejar las rutas del proyecto.
+- [Css](https://getbootstrap.com/) - Librería Bootstrap.
+- [Webpack](https://rometools.github.io/rome/) - Manejador de dependencias
+- [Eslint](https://eslint.org/) - Herramienta para "limpiar" código javascript
+- [Prettier](https://prettier.io/) - Formateador automáticamente de código
+- [Firebase](https://firebase.google.com/) - Base de datos y alojamiento del sitio.
+- [React hook form](https://react-hook-form.com/) - Para la validacion de los formularios.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---

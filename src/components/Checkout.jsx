@@ -1,4 +1,6 @@
+import { Timestamp } from "@firebase/firestore";
 import { useContext, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContextProvider";
 import Alert from "./Alert";
@@ -8,6 +10,12 @@ const Checkout = () => {
   const [error, setError] = useState(false);
   const [orderStatus, setOrderStatus] = useState(false);
   const [orderId, setOrderId] = useState();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
     setOrderStatus(false);
@@ -32,16 +40,11 @@ const Checkout = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (buyer.name == "" || buyer.email == "" || buyer.phone == "") {
-      setError(true);
-      return;
-    }
-    setError(false);
+  const submitting = async () => {
+    const date = new Date(Timestamp.now().seconds * 1000);
     const order = {
       items: cartItems,
+      date,
       total: totalPriceCart(),
       buyer,
     };
@@ -59,106 +62,121 @@ const Checkout = () => {
       style={{ minHeight: "80vh" }}
     >
       <div className="row">
-        <div className="col-12 col-md-10 mx-auto">
+        <div className="col-12 mx-auto">
+          <h1 className="text-center">Checkout</h1>
           <div className="container">
             {!orderStatus ? (
               <div className="row">
-                <div className="col-12 col-md-5 py-4 shadow-lg bg-orange">
-                  <h3 className="text-center">Your items</h3>
-                  <div className="container">
-                    <div className="row p-2">
-                      <div className="col-12">
-                        <hr />
-                        <div className="row">
-                          {cartItems.map((item) => (
-                            <div className="col-4" key={item.id}>
-                              <Link
-                                className="text-white"
-                                to={`/item/${item.id}`}
-                              >
-                                <img
-                                  src={require(`../assets/img/${item.photo}`)}
-                                  alt={item.name}
-                                  className="img-fluid rounded shadow"
-                                />
-                                <h6 className="mt-2 text-center">
-                                  {item.name}
-                                </h6>
-                                <p className="mt-2 text-center">
-                                  <span className="fw-light">
-                                    {item.quantity} x{" "}
-                                  </span>
-                                  ${item.price}
-                                </p>
-                              </Link>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row p-2">
-                    <div className="col-12">
-                      <hr />
-                      <h5 className="mt-5">
-                        <span className="fw-light">Cart Total: </span>{" "}
-                        <span>${totalPriceCart()}</span>
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-12 col-md-7 py-4 px-0">
+                <div className="col-12 col-lg-6 py-4 px-0">
                   <form
-                    className="p-4 p-md-5 bg-dark shadow-lg"
-                    onSubmit={(e) => handleSubmit(e)}
+                    className="p-4 p-md-5 bg-dark rounded"
+                    onSubmit={handleSubmit(submitting)}
                   >
                     {error && (
                       <Alert type="danger">All the info its necesary</Alert>
                     )}
                     <div className="mb-3">
                       <div className="row mb-2">
-                        <div className="col-12 col-md-6 mb-2">
-                          <label htmlFor="name" className="form-label fw-light">
+                        <div className="col-12 col-md-6 mb-2 form-floating">
+                          <input
+                            placeholder="full name"
+                            autoComplete="name"
+                            className={
+                              "form-control " + (errors?.name && "is-invalid")
+                            }
+                            {...register("name", {
+                              required: true,
+                              minLength: 3,
+                              maxLength: 20,
+                              pattern: /^[a-zA-Z\s]*$/,
+                            })}
+                            onChange={handleChange}
+                          />
+                          <label htmlFor="name" className="fw-light">
                             Full Name
                           </label>
+                          {errors?.name?.type === "required" && (
+                            <span className="errorField">
+                              This field is required
+                            </span>
+                          )}
+                          {errors?.name?.type === "maxLength" && (
+                            <span className="errorField">
+                              Full name cannot exceed 20 characters
+                            </span>
+                          )}
+                          {errors?.name?.type === "minLength" && (
+                            <span className="errorField">
+                              Full name cannot be less than 3 characters
+                            </span>
+                          )}
+                          {errors?.name?.type === "pattern" && (
+                            <span className="errorField">
+                              Alphabetical characters only
+                            </span>
+                          )}
+                        </div>
+                        <div className="col-12 col-md-6 mb-2 form-floating">
                           <input
                             type="text"
-                            className="form-control"
-                            id="name"
-                            name="name"
+                            className={
+                              "form-control " + (errors?.phone && "is-invalid")
+                            }
+                            placeholder="Phone"
+                            {...register("phone", {
+                              required: true,
+                              pattern: /^[\d ()+]+$/,
+                            })}
                             onChange={handleChange}
                           />
-                        </div>
-                        <div className="col-12 col-md-6 mb-2">
-                          <label
-                            htmlFor="phone"
-                            className="form-label fw-light"
-                          >
+                          <label htmlFor="phone" className="fw-light">
                             Phone
                           </label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            name="phone"
-                            onChange={handleChange}
-                          />
+                          {errors?.phone?.type === "required" && (
+                            <span className="errorField">
+                              This field is required
+                            </span>
+                          )}
+                          {errors?.phone?.type === "pattern" && (
+                            <span className="errorField">
+                              Only numbers, brackets and plus symbol
+                            </span>
+                          )}
                         </div>
                       </div>
                       <div className="row">
-                        <div className="col-12">
+                        <div className="col-12 form-floating">
+                          <input
+                            className={
+                              "form-control " + (errors?.email && "is-invalid")
+                            }
+                            placeholder="email"
+                            {...register("email", {
+                              required: true,
+                              pattern: {
+                                value:
+                                  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: "invalid email address",
+                              },
+                            })}
+                            onChange={handleChange}
+                          />
                           <label
                             htmlFor="email"
                             className="form-label fw-light"
                           >
                             Email
                           </label>
-                          <input
-                            type="email"
-                            className="form-control"
-                            id="email"
-                            name="email"
-                            onChange={handleChange}
-                          />
+                          {errors?.email?.type === "required" && (
+                            <span className="errorField">
+                              This field is required
+                            </span>
+                          )}
+                          {errors?.email?.message && (
+                            <span className="errorField">
+                              {errors?.email?.message}
+                            </span>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -170,6 +188,44 @@ const Checkout = () => {
                     </button>
                   </form>
                 </div>
+                <div className="col-12 col-lg-6 p-lg-4">
+                  <div className="row py-4">
+                    {cartItems.map((item) => (
+                      <div className="col-12 col-xl-6" key={item.id}>
+                        <Link
+                          className="text-white d-flex"
+                          to={`/item/${item.id}`}
+                        >
+                          <img
+                            src={item.photo}
+                            alt={item.name}
+                            className="img-fluid rounded-circle shadow"
+                          />
+                          <div className="ms-4">
+                            <h6>{item.name}</h6>
+                            <p>
+                              <span className="fw-light">
+                                {item.quantity} x{" "}
+                              </span>
+                              ${item.price}
+                            </p>
+                          </div>
+                        </Link>
+                        <hr className="pt-1" />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="row">
+                    <div className="col-12">
+                      <div className="bg-dark p-3 rounded shadow">
+                        <h5 className="m-0">
+                          <span className="fw-light">Cart Total: </span>{" "}
+                          <span>${totalPriceCart()}</span>
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             ) : (
               <div className="row">
@@ -179,7 +235,7 @@ const Checkout = () => {
                       The order was <b>successfully</b> registered with the
                       following id:
                     </h3>
-                    <h2>{orderId}</h2>
+                    <h3 className="my-4">{orderId}</h3>
                     <h5 className="fw-light">
                       You will be redirected in <b>5</b> seconds
                     </h5>

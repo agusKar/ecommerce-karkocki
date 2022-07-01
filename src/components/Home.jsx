@@ -12,7 +12,7 @@ const Home = () => {
           </div>
           <hr />
         </div>
-        <div className="row g-3">
+        <div className="row g-3 mt-3">
           <ItemListContainer />
         </div>
       </div>

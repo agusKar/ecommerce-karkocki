@@ -44,9 +44,9 @@ const ItemDetail = ({ singleBook }) => {
       {photo && (
         <div className="col-12 col-md-4">
           <img
-            src={require(`../assets/img/${photo}`)}
+            src={photo}
             alt={name}
-            className="img-thumbnail rounded mx-auto d-block"
+            className="img-thumbnail rounded mx-auto d-block w-100 mb-3 mb-sm-0"
           />
         </div>
       )}
