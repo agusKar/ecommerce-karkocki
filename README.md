@@ -39,8 +39,7 @@ La SPA esta alojada en FIREBASE.
 ## Demo 🖥️
 
 ### Agregando productos al carrito
-
-![add-to-cart](https://raw.githubusercontent.com/agusKar/ecommerce-karkocki/blob/main/addToCart.gif)
+![add-to-cart](./addToCart.gif)
 
 ### Checkout
 
