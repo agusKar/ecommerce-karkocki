@@ -40,11 +40,11 @@ La SPA esta alojada en FIREBASE.
 
 ### Agregando productos al carrito
 
-<!-- ![add-to-cart](https://user-images.githubusercontent.com/21273404/164844910-bea2e713-9467-486d-a1f1-66b421ce0121.gif) -->
+![add-to-cart](./addToCart.gif)
 
 ### Checkout
 
-<!-- ![checkout](https://user-images.githubusercontent.com/21273404/164844927-615dccc4-2af1-4f26-9f24-a639f561e04e.gif) -->
+![checkout](./checkout.gif)
 
 ## Construido con 🛠️
 
