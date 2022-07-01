@@ -48,7 +48,7 @@ La SPA esta alojada en FIREBASE.
 
 ## Construido con 🛠️
 
-_Herramientas que utilizaste para crear tu proyecto_
+_Herramientas que utilice_
 
 - [React.js](https://nextjs.org/) - El framework web usado
 - [React Router Dom](https://reactrouter.com/) - Libreria para manejar las rutas del proyecto.
