@@ -36,7 +36,7 @@ _Y corre en el navegador [http://localhost:3000](http://localhost:3000)_
 
 La SPA esta alojada en FIREBASE.
 
-<!-- - [books-store](https://shoes-store-coder.netlify.app/) -->
+- [books-store](https://bookstore-89cc9.web.app)
 
 ## Demo 🖥️
 
