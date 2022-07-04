@@ -235,7 +235,7 @@ const Checkout = () => {
                       The order was <b>successfully</b> registered with the
                       following id:
                     </h3>
-                    <h3 className="my-4">{orderId}</h3>
+                    <h3 className="my-4 text-truncate">{orderId}</h3>
                     <h5 className="fw-light">
                       You will be redirected in <b>5</b> seconds
                     </h5>

@@ -149,9 +149,12 @@ const CartContextProvider = ({ children }) => {
     );
   };
   const totalPriceCart = () => {
-    return cartItems?.reduce((previousValue, currentValue) => {
-      return previousValue + currentValue.price * currentValue.quantity;
+    const total = cartItems?.reduce((sum, i) => {
+      console.log(typeof i.price, typeof i.quantity);
+      return sum + i.price * i.quantity;
     }, 0);
+
+    return total.toFixed(2);
   };
 
   return (

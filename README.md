@@ -1,6 +1,8 @@
 # Store 🛍️
 
-_El STORE esta desarrollado con React.js (v18.1.0)_
+_El STORE esta desarrollado con React.js (v18.1.0)_.
+
+Este ecommerce se especializa en la venta de libros y fue realizado como ejercicio para la practica profesional. Me gustaria en un futuro cambiar ciertas funciones usadas en el context y probarlas con Redux, asi como tambien integrar librerias como por ejemplo, para geolocalizacion y mostrar ofertas dependiendo del pais donde se visita el sitio, integrar modales para mostrar promociones, suscripcion a newsletter, etc. Asi como tambien Unit Testing con Jest por ejemplo.
 
 ## Comenzando 🚀
 
