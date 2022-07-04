@@ -150,7 +150,6 @@ const CartContextProvider = ({ children }) => {
   };
   const totalPriceCart = () => {
     const total = cartItems?.reduce((sum, i) => {
-      console.log(typeof i.price, typeof i.quantity);
       return sum + i.price * i.quantity;
     }, 0);
 

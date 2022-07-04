@@ -44,7 +44,7 @@ const Orders = () => {
           <>
             {arrayOrders && arrayOrders.length > 0 ? (
               <table className="table table-dark table-striped">
-                <thead className="p-2">
+                <thead className="p-2 text-center">
                   <tr>
                     <th>Order Id</th>
                     <th>Products</th>
@@ -65,26 +65,28 @@ const Orders = () => {
                               {order.data.items.length > 0 &&
                                 order.data.items.map((item) => (
                                   <div key={item.id}>
-                                    <div className="d-flex">
+                                    <div className="d-flex justify-content-between">
                                       <b className="text-orange me-2">
                                         {item.name}
                                       </b>
-                                      <span className="fw-light">
-                                        {item.quantity} x ${item.price}
+                                      <span className="fw-light text-end">
+                                        {item.quantity} x <b>${item.price}</b>
                                       </span>
                                     </div>
                                     ---------
                                   </div>
                                 ))}
                             </td>
-                            <td>
+                            <td className="text-center">
                               {order.data.date
                                 .toDate()
                                 .toLocaleString("en-GB", {
                                   timeZone: "America/Buenos_Aires",
                                 })}
                             </td>
-                            <td className="fw-bold">${order.data.total}</td>
+                            <td className="fw-bold text-center">
+                              ${order.data.total}
+                            </td>
                           </tr>
                         )
                     )}

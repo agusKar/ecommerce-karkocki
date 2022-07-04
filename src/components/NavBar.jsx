@@ -16,7 +16,7 @@ const NavBar = () => {
     >
       <div className="container">
         <Link
-          onClick={() => setExpanded(!expanded)}
+          onClick={() => setExpanded(false)}
           className="navbar-brand grow"
           to={"/"}
         >
@@ -42,7 +42,7 @@ const NavBar = () => {
           <ul className="navbar-nav navbar-nav-scroll m-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link
-                onClick={() => setExpanded(!expanded)}
+                onClick={() => setExpanded(false)}
                 className="nav-link grow active"
                 aria-current="page"
                 to="./"
@@ -67,7 +67,7 @@ const NavBar = () => {
                   categories.map((category, index) => (
                     <li key={index}>
                       <Link
-                        onClick={() => setExpanded(!expanded)}
+                        onClick={() => setExpanded(false)}
                         className="dropdown-item"
                         to={`category/${category}`}
                       >
@@ -82,7 +82,7 @@ const NavBar = () => {
             {orders.length > 0 && (
               <li className="nav-item grow position-relative">
                 <Link
-                  onClick={() => setExpanded(!expanded)}
+                  onClick={() => setExpanded(false)}
                   to="/orders"
                   title="Your orders"
                   className="nav-link grow active"
@@ -102,7 +102,7 @@ const NavBar = () => {
             )}
             <li className="nav-item grow position-relative">
               <Link
-                onClick={() => setExpanded(!expanded)}
+                onClick={() => setExpanded(false)}
                 className="nav-link"
                 title="Cart"
                 to="/cart"
