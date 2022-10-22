@@ -15,7 +15,7 @@ const Category = () => {
       <div className="row">
         <div className="col-12">
           <h2 className="text-center">
-            Books by category <br />
+            Books by Category <br />
             <span className="text-danger">{idParam}</span>
           </h2>
         </div>
